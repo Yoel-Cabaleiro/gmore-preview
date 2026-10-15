@@ -21,13 +21,26 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 /* Images whose src is set by js/app.js stay invisible until then. */
 img:not([src]) { visibility: hidden; }
 
-/* Header */
-.site-header { background: var(--header-bg); border-bottom: var(--header-border); }
+/* Header: sticky; js/nav.js adds .is-hidden while scrolling down. */
+.site-header { position: sticky; top: 0; z-index: 100; background: var(--header-bg); border-bottom: var(--header-border); transition: transform .25s ease; }
+.site-header.is-hidden { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }
 .header-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px; padding-top: 18px; padding-bottom: 18px; }
 .logo-link { display: block; line-height: 0; }
 .logo { height: var(--logo-h); width: auto; display: block; }
 .nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 30px; font-size: 15px; }
 .nav-link { color: var(--ink); text-decoration: none; }
+
+/* Hamburger (under 900px only). Three bars in ink that turn into a cross. */
+.nav-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: var(--btn-radius); background: none; color: var(--ink); cursor: pointer; }
+.nav-toggle-bars, .nav-toggle-bars::before, .nav-toggle-bars::after { display: block; width: 22px; height: 2px; border-radius: 1px; background: currentColor; transition: transform .2s ease, background-color .2s ease; }
+.nav-toggle-bars { position: relative; }
+.nav-toggle-bars::before, .nav-toggle-bars::after { content: ""; position: absolute; left: 0; }
+.nav-toggle-bars::before { top: -7px; }
+.nav-toggle-bars::after { top: 7px; }
+.nav-open .nav-toggle-bars { background-color: transparent; }
+.nav-open .nav-toggle-bars::before { transform: translateY(7px) rotate(45deg); }
+.nav-open .nav-toggle-bars::after { transform: translateY(-7px) rotate(-45deg); }
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; border-radius: var(--btn-radius); text-decoration: none; font-weight: var(--btn-weight); }
@@ -107,4 +120,12 @@ img:not([src]) { visibility: hidden; }
   .cols3, .cols4, .foot { grid-template-columns: minmax(0, 1fr); }
   .hero-art { display: none; }
   .h1 { font-size: 44px; }
+
+  /* Collapsed menu: logo + hamburger; the nav opens as a full-width list. */
+  .js .nav-toggle { display: inline-flex; }
+  .js .nav { display: none; }
+  .js .nav-open .header-inner { row-gap: 8px; }
+  .js .nav-open .nav { display: flex; flex-direction: column; align-items: stretch; flex-basis: 100%; gap: 0; padding-bottom: 8px; font-size: 17px; }
+  .js .nav-open .nav-link { padding: 12px 0; border-top: 1px solid var(--line); }
+  .js .nav-open .nav .btn { justify-content: center; margin-top: 12px; }
 }

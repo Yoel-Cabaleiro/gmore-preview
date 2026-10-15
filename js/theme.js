@@ -8,6 +8,8 @@
   try { stored = localStorage.getItem('gmore-theme'); } catch (e) {}
   var theme = IDS.indexOf(fromUrl) > -1 ? fromUrl : IDS.indexOf(stored) > -1 ? stored : '1';
   document.documentElement.setAttribute('data-theme', theme);
+  // Lets CSS collapse the mobile menu only when js/nav.js can open it.
+  document.documentElement.classList.add('js');
   // Shown inside the switcher's mobile-view frame (see css/switcher.css).
   if (window.self !== window.top) document.documentElement.classList.add('is-framed');
 })();

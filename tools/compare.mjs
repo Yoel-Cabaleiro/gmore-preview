@@ -1,12 +1,15 @@
 // Visual check: screenshots every brand/reference/<id>.html (baseline) and
-// index.html?theme=<id>, compares them pixel by pixel and reports per section.
-// Also checks that ?theme / localStorage / the switcher behave.
+// index.html?theme=<id>, then compares them section by section (header, hero,
+// about, projects, call, people, footer), so a change in one section's height
+// does not show up as a difference in every section below it.
+// Also checks the switcher, the mobile menu and the sticky header.
 // Usage: node tools/compare.mjs [width ...]   (default 1440 390)
-// Output: tools/shots/<width>/{ref,site,diff}-<id>.png and tools/shots/report.md
+// Output: tools/shots/<width>/{ref,site}-<id>.png (full page),
+//         diff-<id>-<section>.png (only where they differ) and tools/shots/report.md
 import { chromium } from 'playwright';
 import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
-import { mkdir, writeFile, readFile } from 'node:fs/promises';
+import { mkdir, writeFile, readFile, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { serve } from './serve.mjs';
@@ -19,13 +22,16 @@ if (!widths.length) widths.push(1440, 390);
 
 const { identities } = JSON.parse(await readFile(path.join(root, 'brand/identities.json'), 'utf8'));
 const ids = identities.map(i => i.id);
-const SECTIONS = ['header', '#top', '#about', '#projects', '#call', '#people', 'footer'];
+const SECTIONS = { header: 'header', hero: '#top', about: '#about', projects: '#projects', call: '#call', people: '#people', footer: 'footer' };
+// Preview-only UI is left out of the site screenshots: the switcher, and the
+// sticky behaviour (so section crops never include an overlapping header).
+const SITE_SHOT_CSS = '.idsel{display:none!important}.site-header{position:static!important;transform:none!important}';
 
 const server = await serve();
 const base = `http://127.0.0.1:${server.address().port}/`;
 const browser = await chromium.launch();
 
-async function shoot(url, width, file, { hideSwitcher = false } = {}) {
+async function shoot(url, width, file, { site = false } = {}) {
   const context = await browser.newContext({ viewport: { width, height: 900 }, deviceScaleFactor: 1 });
   const page = await context.newPage();
   const problems = [];
@@ -36,17 +42,16 @@ async function shoot(url, width, file, { hideSwitcher = false } = {}) {
   const external = [];
   page.on('request', r => { if (!r.url().startsWith(base)) external.push(r.url()); });
   await page.goto(url, { waitUntil: 'networkidle' });
-  if (hideSwitcher) await page.addStyleTag({ content: '.idsel{display:none!important}' });
+  if (site) await page.addStyleTag({ content: SITE_SHOT_CSS });
   await page.evaluate(() => document.fonts.ready);
-  // Section boxes for the per-section report.
-  const boxes = await page.evaluate(sel => sel.map(s => {
-    const r = document.querySelector(s).getBoundingClientRect();
-    return { s, top: Math.round(r.top + scrollY), bottom: Math.round(r.bottom + scrollY) };
-  }), SECTIONS);
   const fonts = await page.evaluate(() => [...document.fonts].filter(f => f.status === 'loaded').map(f => `${f.family} ${f.style} ${f.weight}`));
   await page.screenshot({ path: file, fullPage: true });
+  const sections = {};
+  for (const [name, sel] of Object.entries(SECTIONS)) {
+    sections[name] = PNG.sync.read(await page.locator(sel).first().screenshot());
+  }
   await context.close();
-  return { problems, external, boxes, fonts: [...new Set(fonts)] };
+  return { problems, external, sections, fonts: [...new Set(fonts)] };
 }
 
 function pad(png, w, h) {
@@ -57,46 +62,35 @@ function pad(png, w, h) {
   return out;
 }
 
-function compare(refFile, siteFile, diffFile, boxes) {
-  return Promise.all([readFile(refFile), readFile(siteFile)]).then(async ([a, b]) => {
-    let ref = PNG.sync.read(a), site = PNG.sync.read(b);
-    const w = Math.max(ref.width, site.width), h = Math.max(ref.height, site.height);
-    const sizes = { ref: `${ref.width}×${ref.height}`, site: `${site.width}×${site.height}` };
-    ref = pad(ref, w, h); site = pad(site, w, h);
-    const diff = new PNG({ width: w, height: h });
-    const count = pixelmatch(ref.data, site.data, diff.data, w, h, { threshold: 0.1, includeAA: false });
-    await writeFile(diffFile, PNG.sync.write(diff));
-    // Attribute differing pixels (red in the diff image) to page sections.
-    const perSection = Object.fromEntries(SECTIONS.map(s => [s, 0]));
-    for (let y = 0; y < h; y++) {
-      let row = 0;
-      for (let x = 0; x < w; x++) {
-        const i = (y * w + x) * 4;
-        if (diff.data[i] === 255 && diff.data[i + 1] === 0 && diff.data[i + 2] === 0) row++;
-      }
-      if (!row) continue;
-      const box = boxes.find(bx => y >= bx.top && y < bx.bottom);
-      perSection[box ? box.s : 'header'] += row;
-    }
-    return { sizes, count, pct: (100 * count / (w * h)), perSection };
-  });
+async function compare(ref, site, diffFile) {
+  const w = Math.max(ref.width, site.width), h = Math.max(ref.height, site.height);
+  const sizeNote = ref.height !== site.height ? ` (height ${ref.height}→${site.height})` : '';
+  const diff = new PNG({ width: w, height: h });
+  const count = pixelmatch(pad(ref, w, h).data, pad(site, w, h).data, diff.data, w, h, { threshold: 0.1, includeAA: false });
+  if (count) await writeFile(diffFile, PNG.sync.write(diff));
+  return { count, sizeNote };
 }
 
-const report = [`# Visual comparison`, '', `Generated ${new Date().toISOString()}`, ''];
+const report = [`# Visual comparison`, '', `Generated ${new Date().toISOString()}`, '',
+  'Differences per section, in pixels. Sections not listed match exactly.', ''];
 
 for (const width of widths) {
   const dir = path.join(outRoot, String(width));
+  await rm(dir, { recursive: true, force: true });
   await mkdir(dir, { recursive: true });
-  report.push(`## ${width} px`, '', '| id | ref size | site size | diff px | diff % | by section | issues |', '|---|---|---|---|---|---|---|');
+  report.push(`## ${width} px`, '', '| id | differing sections | issues |', '|---|---|---|');
   for (const id of ids) {
-    const refFile = path.join(dir, `ref-${id}.png`), siteFile = path.join(dir, `site-${id}.png`), diffFile = path.join(dir, `diff-${id}.png`);
-    await shoot(`${base}brand/reference/${id}.html`, width, refFile);
-    const site = await shoot(`${base}index.html?theme=${id}`, width, siteFile, { hideSwitcher: true });
-    const r = await compare(refFile, siteFile, diffFile, site.boxes);
-    const sections = Object.entries(r.perSection).filter(([, n]) => n).map(([s, n]) => `${s}: ${n}`).join(', ') || 'none';
+    const ref = await shoot(`${base}brand/reference/${id}.html`, width, path.join(dir, `ref-${id}.png`));
+    const site = await shoot(`${base}index.html?theme=${id}`, width, path.join(dir, `site-${id}.png`), { site: true });
+    const parts = [];
+    for (const name of Object.keys(SECTIONS)) {
+      const r = await compare(ref.sections[name], site.sections[name], path.join(dir, `diff-${id}-${name}.png`));
+      if (r.count || r.sizeNote) parts.push(`${name}: ${r.count}${r.sizeNote}`);
+    }
+    const sections = parts.join(', ') || 'none';
     const issues = [...site.problems, ...site.external.map(u => `external: ${u}`)].join('<br>') || 'none';
-    report.push(`| ${id} | ${r.sizes.ref} | ${r.sizes.site} | ${r.count} | ${r.pct.toFixed(3)} | ${sections} | ${issues} |`);
-    console.log(`${width}px ${id}: ${r.count} px (${r.pct.toFixed(3)}%)  ${sections}${site.problems.length || site.external.length ? '  ISSUES: ' + issues : ''}`);
+    report.push(`| ${id} | ${sections} | ${issues} |`);
+    console.log(`${width}px ${id}: ${sections}${site.problems.length || site.external.length ? '  ISSUES: ' + issues : ''}`);
     if (width === widths[0] && id === ids[0]) console.log('  fonts loaded on site:', site.fonts.join(' | '));
   }
   report.push('');
@@ -171,6 +165,37 @@ const check = (name, ok, detail = '') => { checks.push(`- ${ok ? 'PASS' : 'FAIL'
   await page.goto(`${base}index.html?theme=5&view=mobile`, { waitUntil: 'networkidle' });
   check('narrow screen ignores view=mobile', await page.locator('.idsel-frame').count() === 0 && !new URL(page.url()).searchParams.has('view'), page.url());
   check('narrow screen hides the phone button', await page.locator('.idsel-viewbtn').isHidden());
+
+  // Hamburger menu
+  const nav = page.locator('#main-nav');
+  check('hamburger visible, nav collapsed', await page.locator('.nav-toggle').isVisible() && await nav.isHidden());
+  await page.click('.nav-toggle');
+  check('hamburger opens nav', await nav.isVisible() && await page.getAttribute('.nav-toggle', 'aria-expanded') === 'true');
+  const joinBox = await page.locator('#main-nav .btn').boundingBox();
+  check('Join button full width in menu', Math.round(joinBox.width) === 390 - 48, `${Math.round(joinBox.width)}px`);
+  await page.click('#main-nav a[href="#projects"]');
+  check('choosing a link closes the menu', await nav.isHidden());
+  await page.click('.nav-toggle');
+  await page.keyboard.press('Escape');
+  check('Escape closes the menu', await nav.isHidden());
+  await context.close();
+}
+{
+  // Sticky header: hides on scroll down, returns on scroll up and at the top edge.
+  const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const page = await context.newPage();
+  await page.goto(`${base}index.html?theme=3b`, { waitUntil: 'networkidle' });
+  const headerTop = () => page.locator('.site-header').evaluate(h => Math.round(h.getBoundingClientRect().bottom));
+  const settle = () => page.waitForTimeout(400);
+  check('desktop has no hamburger', await page.locator('.nav-toggle').isHidden());
+  await page.mouse.move(700, 500);
+  await page.mouse.wheel(0, 1200); await settle();
+  check('scrolling down hides the header', await headerTop() <= 0);
+  await page.mouse.wheel(0, -300); await settle();
+  check('scrolling up shows it, stuck to the top', await headerTop() > 0 && await page.evaluate(() => scrollY) > 500);
+  await page.mouse.wheel(0, 800); await settle();
+  await page.mouse.move(700, 5); await settle();
+  check('pointer at the top edge shows it', await headerTop() > 0);
   await context.close();
 }
 report.push('## Behaviour', '', ...checks, '');

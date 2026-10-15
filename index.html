@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/overrides.css">
 <link rel="stylesheet" href="css/switcher.css">
 <script src="js/app.js" defer></script>
+<script src="js/nav.js" defer></script>
 </head>
 <body>
 <div class="page">
@@ -19,7 +20,8 @@
 <header class="site-header">
 <div class="wrap header-inner">
 <a href="#top" aria-label="G-MoRE home" class="logo-link"><img class="logo" alt="G-MoRE, Global Moral Resilience and Ethical Practice Collaboratory"></a>
-<nav aria-label="Main" class="nav">
+<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
+<nav aria-label="Main" class="nav" id="main-nav">
 <a href="#about" class="nav-link">About</a>
 <a href="#projects" class="nav-link">Projects</a>
 <a href="#people" class="nav-link">Researchers</a>

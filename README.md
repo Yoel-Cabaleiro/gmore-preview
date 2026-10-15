@@ -25,3 +25,5 @@ Visual check against `brand/reference/*.html` (dev only):
 Known, intentional differences from the references: the open-call band of 3b
 (background #012732 as in `identities.json`, not the reference's #E0A93B) and the band
 H2 of 3c (#012732 as in the override, not #1E8A5A). Both references fail contrast.
+Under 900 px the header collapses into a hamburger menu (the references wrap the links), and
+the header is sticky: it hides while scrolling down and returns when scrolling up.
