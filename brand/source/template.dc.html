@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>$title</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="$fonts">
+<style>
+body{margin:0;background:$bg}
+a{color:$primary}a:hover{color:$ink}
+.wrap{max-width:1200px;margin:0 auto;padding-left:48px;padding-right:48px;box-sizing:border-box}
+a:focus-visible,button:focus-visible{outline:2px solid $accent;outline-offset:3px}
+@media (max-width:900px){
+.wrap{padding-left:24px;padding-right:24px}
+.cols3,.cols4,.foot{grid-template-columns:minmax(0,1fr)!important}
+.hero-art{display:none!important}
+.h1{font-size:44px!important}
+}
+</style>
+</helmet>
+<div style="background: $bg; color: $ink; font-family: $body_font; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased">
+
+<header style="background: $header_bg; border-bottom: $header_border">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px; padding-top: 18px; padding-bottom: 18px">
+<a href="#top" aria-label="G-MoRE home" style="display: block; line-height: 0"><img src="$logo" alt="G-MoRE, Global Moral Resilience and Ethical Practice Collaboratory" style="height: $logo_h; width: auto; display: block"></a>
+<nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 30px; font-size: 15px">
+<a href="#about" style="color: $ink; text-decoration: none">About</a>
+<a href="#projects" style="color: $ink; text-decoration: none">Projects</a>
+<a href="#people" style="color: $ink; text-decoration: none">Researchers</a>
+<a href="#call" style="color: $ink; text-decoration: none">Open calls</a>
+<a href="#footer" style="color: $ink; text-decoration: none">Resources</a>
+<a href="#join" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: $btn_radius; background: $primary; color: #FFFFFF; text-decoration: none; font-weight: $btn_weight">Join the network</a>
+</nav>
+</div>
+</header>
+
+<section id="top" style="padding-top: 96px; padding-bottom: 104px">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 56px">
+<div style="flex: 1 1 520px; max-width: 660px">
+<h1 class="h1" style="margin: 0; font-family: $head_font; font-style: $h1_style; font-weight: $h1_weight; font-size: $h1_size; line-height: 1.06; letter-spacing: $h_track; color: $ink">$h1</h1>
+<div aria-hidden="true" style="width: 56px; height: 2px; background: $accent; margin-top: 32px; margin-bottom: 28px"></div>
+<p style="margin: 0; max-width: 34em; font-size: 20px; line-height: 1.55; color: $body">An international network of professionals who study and live with moral distress, working together to build moral resilience and ethical practice.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px">
+<a href="#join" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 26px; border-radius: $btn_radius; background: $primary; color: #FFFFFF; text-decoration: none; font-weight: $btn_weight">Join the network</a>
+<a href="#projects" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 26px; border-radius: $btn_radius; border: 1.5px solid $primary; color: $primary; text-decoration: none; font-weight: $btn_weight; box-sizing: border-box">See our projects</a>
+</div>
+</div>
+<div class="hero-art" style="flex: 0 1 380px; display: flex; justify-content: center">
+<img src="$symbol" alt="" style="width: 320px; height: auto; display: block">
+</div>
+</div>
+</section>
+
+<section id="about" style="background: $tint; padding-top: 88px; padding-bottom: 96px">
+<div class="wrap">
+<h2 style="margin: 0; max-width: 18em; font-family: $head_font; font-style: $h2_style; font-weight: $h2_weight; font-size: 40px; line-height: 1.15; letter-spacing: $h_track; color: $ink">Moral distress is shared. So is the work of facing it.</h2>
+<div class="cols3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; margin-top: 56px">
+<div>
+<div aria-hidden="true" style="width: 40px; height: 4px; border-radius: 2px; background: $p1"></div>
+<h3 style="margin: 20px 0 10px; font-family: $head_font; font-style: $h2_style; font-weight: $h3_weight; font-size: 26px; line-height: 1.2; color: $ink">Research</h3>
+<p style="margin: 0; color: $body">Joint studies on moral distress and moral injury across professions, countries and care settings.</p>
+</div>
+<div>
+<div aria-hidden="true" style="width: 40px; height: 4px; border-radius: 2px; background: $p2"></div>
+<h3 style="margin: 20px 0 10px; font-family: $head_font; font-style: $h2_style; font-weight: $h3_weight; font-size: 26px; line-height: 1.2; color: $ink">Dialogue</h3>
+<p style="margin: 0; color: $body">Seminars and case conversations where practitioners and researchers think through hard situations together.</p>
+</div>
+<div>
+<div aria-hidden="true" style="width: 40px; height: 4px; border-radius: 2px; background: $p3"></div>
+<h3 style="margin: 20px 0 10px; font-family: $head_font; font-style: $h2_style; font-weight: $h3_weight; font-size: 26px; line-height: 1.2; color: $ink">Practice</h3>
+<p style="margin: 0; color: $body">Tools and training that teams can take back to the ward, the classroom or the office.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="projects" style="padding-top: 96px; padding-bottom: 96px">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 32px">
+<h2 style="margin: 0; font-family: $head_font; font-style: $h2_style; font-weight: $h2_weight; font-size: 40px; line-height: 1.15; letter-spacing: $h_track; color: $ink">Current projects</h2>
+<a href="#projects" style="font-size: 16px; font-weight: $btn_weight">All projects</a>
+</div>
+<div class="cols3" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 44px">
+<article style="background: $surface; border: 1px solid $line; border-radius: $radius; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 14px; font-weight: $btn_weight; color: $primary">Research</p>
+<h3 style="margin: 0; font-family: $head_font; font-style: $h2_style; font-weight: $h3_weight; font-size: 24px; line-height: 1.25; color: $ink">Moral distress in critical care teams</h3>
+<p style="margin: 0; font-size: 16px; color: $body">A comparative study of how nurses and physicians experience and recover from morally distressing situations.</p>
+<p style="margin: auto 0 0; padding-top: 16px; border-top: 1px solid $line; font-size: 14px; color: $body">[Lead institution] · [Countries]</p>
+</article>
+<article style="background: $surface; border: 1px solid $line; border-radius: $radius; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 14px; font-weight: $btn_weight; color: $primary">Dialogue</p>
+<h3 style="margin: 0; font-family: $head_font; font-style: $h2_style; font-weight: $h3_weight; font-size: 24px; line-height: 1.25; color: $ink">Ethics case conversations</h3>
+<p style="margin: 0; font-size: 16px; color: $body">A monthly online seminar where members bring a real case and work through it with colleagues from other countries.</p>
+<p style="margin: auto 0 0; padding-top: 16px; border-top: 1px solid $line; font-size: 14px; color: $body">[Lead institution] · [Countries]</p>
+</article>
+<article style="background: $surface; border: 1px solid $line; border-radius: $radius; padding: 32px; display: flex; flex-direction: column; gap: 14px">
+<p style="margin: 0; font-size: 14px; font-weight: $btn_weight; color: $primary">Practice</p>
+<h3 style="margin: 0; font-family: $head_font; font-style: $h2_style; font-weight: $h3_weight; font-size: 24px; line-height: 1.25; color: $ink">A resilience toolkit for frontline teams</h3>
+<p style="margin: 0; font-size: 16px; color: $body">Short, evidence-informed exercises that teams can use after a difficult shift or decision.</p>
+<p style="margin: auto 0 0; padding-top: 16px; border-top: 1px solid $line; font-size: 14px; color: $body">[Lead institution] · [Countries]</p>
+</article>
+</div>
+</div>
+</section>
+
+<section id="call" style="background: $band; color: $band_text; padding-top: 88px; padding-bottom: 88px">
+<div class="wrap" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px 64px">
+<div style="flex: 1 1 520px; max-width: 680px">
+<p style="margin: 0 0 14px; font-size: 15px; font-weight: $btn_weight; color: $band_muted">Open call · Deadline [date]</p>
+<h2 style="margin: 0; font-family: $head_font; font-style: $h2_style; font-weight: $h2_weight; font-size: 40px; line-height: 1.15; letter-spacing: $h_track; color: $band_text">Propose a joint project</h2>
+<p style="margin: 18px 0 0; font-size: 18px; color: $band_text">Send a short idea and we will help you find partners in other countries and disciplines to develop it together.</p>
+</div>
+<a href="#call" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 30px; border-radius: $btn_radius; background: $accent; color: $ink; text-decoration: none; font-weight: $btn_weight">Send a proposal</a>
+</div>
+</section>
+
+<section id="people" style="padding-top: 96px; padding-bottom: 96px">
+<div class="wrap">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 32px">
+<h2 style="margin: 0; font-family: $head_font; font-style: $h2_style; font-weight: $h2_weight; font-size: 40px; line-height: 1.15; letter-spacing: $h_track; color: $ink">People in the network</h2>
+<a href="#people" style="font-size: 16px; font-weight: $btn_weight">Meet all researchers</a>
+</div>
+<div class="cols4" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin-top: 44px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div aria-hidden="true" style="width: 88px; height: 88px; border-radius: 50%; background: $avatar; color: $ink; display: flex; align-items: center; justify-content: center; font-family: $head_font; font-size: 28px; margin-bottom: 14px">NS</div>
+<p style="margin: 0; font-weight: $btn_weight">[Name Surname]</p>
+<p style="margin: 0; font-size: 15px; color: $body">[Role] · [Institution]</p>
+<p style="margin: 0; font-size: 15px; color: $body">[Country]</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div aria-hidden="true" style="width: 88px; height: 88px; border-radius: 50%; background: $avatar; color: $ink; display: flex; align-items: center; justify-content: center; font-family: $head_font; font-size: 28px; margin-bottom: 14px">NS</div>
+<p style="margin: 0; font-weight: $btn_weight">[Name Surname]</p>
+<p style="margin: 0; font-size: 15px; color: $body">[Role] · [Institution]</p>
+<p style="margin: 0; font-size: 15px; color: $body">[Country]</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div aria-hidden="true" style="width: 88px; height: 88px; border-radius: 50%; background: $avatar; color: $ink; display: flex; align-items: center; justify-content: center; font-family: $head_font; font-size: 28px; margin-bottom: 14px">NS</div>
+<p style="margin: 0; font-weight: $btn_weight">[Name Surname]</p>
+<p style="margin: 0; font-size: 15px; color: $body">[Role] · [Institution]</p>
+<p style="margin: 0; font-size: 15px; color: $body">[Country]</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div aria-hidden="true" style="width: 88px; height: 88px; border-radius: 50%; background: $avatar; color: $ink; display: flex; align-items: center; justify-content: center; font-family: $head_font; font-size: 28px; margin-bottom: 14px">NS</div>
+<p style="margin: 0; font-weight: $btn_weight">[Name Surname]</p>
+<p style="margin: 0; font-size: 15px; color: $body">[Role] · [Institution]</p>
+<p style="margin: 0; font-size: 15px; color: $body">[Country]</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer id="footer" style="border-top: 1px solid $line; padding-top: 64px; padding-bottom: 48px">
+<div class="wrap">
+<div class="foot" style="display: grid; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); gap: 40px">
+<div id="join">
+<img src="$logo" alt="G-MoRE" style="height: $logo_h; width: auto; display: block">
+<p style="margin: 20px 0 0; max-width: 24em; font-size: 15px; color: $body">Global Moral Resilience and Ethical Practice Collaboratory. Open to researchers and practitioners in any country.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+<p style="margin: 0 0 4px; font-weight: $btn_weight">Network</p>
+<a href="#about" style="color: $body">About</a>
+<a href="#people" style="color: $body">Researchers</a>
+<a href="#join" style="color: $body">Join</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+<p style="margin: 0 0 4px; font-weight: $btn_weight">Work</p>
+<a href="#projects" style="color: $body">Projects</a>
+<a href="#call" style="color: $body">Open calls</a>
+<a href="#footer" style="color: $body">Resources</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+<p style="margin: 0 0 4px; font-weight: $btn_weight">Contact</p>
+<a href="#footer" style="color: $body">[email@g-more.org]</a>
+<a href="#footer" style="color: $body">LinkedIn</a>
+</div>
+</div>
+<p style="margin: 56px 0 0; font-size: 14px; color: $body">© 2026 G-MoRE</p>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3100}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

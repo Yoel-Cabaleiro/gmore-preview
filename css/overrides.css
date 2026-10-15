@@ -1,0 +1,80 @@
+/* Non-token differences from the "overrides" lists in brand/identities.json.
+   Values are copied verbatim; each block names the override it implements.
+   Note: in tokens.css the 3b/3c --header-border value contains "; border-image: …",
+   which ends the custom property, so the stripes are applied here instead. */
+
+/* ── 3b · Many perspectives: colour shared out ─────────────────────────── */
+:root[data-theme="3b"] {
+  --stripe: linear-gradient(90deg, #1E8A5A 0 25%, #1A9AA0 25% 50%, #2440A8 50% 75%, #E0A93B 75% 100%);
+}
+/* filled buttons (header + hero primary) */
+:root[data-theme="3b"] .btn-primary { background: #E0A93B; color: #012732; }
+/* header bottom border and footer top border: 4px stripe */
+:root[data-theme="3b"] .site-header { border-image: var(--stripe) 1; }
+:root[data-theme="3b"] .site-footer { border-top: 4px solid #1E8A5A; border-image: var(--stripe) 1; }
+/* hero rule under H1: 96x4px, same stripe */
+:root[data-theme="3b"] .hero-rule { width: 96px; height: 4px; background: var(--stripe); }
+/* project cards: border-top 6px per pillar; category label in ink */
+:root[data-theme="3b"] .card--research { border-top: 6px solid #1E8A5A; }
+:root[data-theme="3b"] .card--dialogue { border-top: 6px solid #1A9AA0; }
+:root[data-theme="3b"] .card--practice { border-top: 6px solid #E0A93B; }
+:root[data-theme="3b"] .card-cat { color: #012732; }
+/* researcher avatars (in order) */
+:root[data-theme="3b"] .person:nth-child(1) .avatar { background: #1E8A5A; color: #FFFFFF; }
+:root[data-theme="3b"] .person:nth-child(2) .avatar { background: #1A9AA0; color: #012732; }
+:root[data-theme="3b"] .person:nth-child(3) .avatar { background: #2440A8; color: #FFFFFF; }
+:root[data-theme="3b"] .person:nth-child(4) .avatar { background: #E0A93B; color: #012732; }
+/* open-call band: background #012732, label #E0A93B, Ochre button with ink text.
+   Already produced by the band / band-muted / accent / ink tokens. */
+
+/* ── 3c · Many perspectives: greens and teal ───────────────────────────── */
+:root[data-theme="3c"] {
+  --stripe: linear-gradient(90deg, #1E8A5A 0 50%, #1A9AA0 50% 88%, #E0A93B 88% 100%);
+}
+/* H1, H2, H3 on light backgrounds (the open-call band keeps #012732) */
+:root[data-theme="3c"] :is(h1, h2, h3):not(.call *) { color: #1E8A5A; }
+/* filled buttons (header + hero primary) */
+:root[data-theme="3c"] .btn-primary { background: #1A9AA0; color: #012732; }
+/* open-call band: background #1A9AA0 and text #012732 come from the tokens;
+   button background #012732 with white text */
+:root[data-theme="3c"] .btn-call { background: #012732; color: #FFFFFF; }
+/* header bottom border and footer top border: 4px stripe */
+:root[data-theme="3c"] .site-header { border-image: var(--stripe) 1; }
+:root[data-theme="3c"] .site-footer { border-top: 4px solid #1E8A5A; border-image: var(--stripe) 1; }
+/* hero rule under H1: 96x4px, same stripe */
+:root[data-theme="3c"] .hero-rule { width: 96px; height: 4px; background: var(--stripe); }
+/* project cards: border-top 6px per pillar */
+:root[data-theme="3c"] .card--research { border-top: 6px solid #1E8A5A; }
+:root[data-theme="3c"] .card--dialogue { border-top: 6px solid #1A9AA0; }
+:root[data-theme="3c"] .card--practice { border-top: 6px solid #E0A93B; }
+/* researcher avatars (in order) */
+:root[data-theme="3c"] .person:nth-child(odd) .avatar { background: #1E8A5A; color: #FFFFFF; }
+:root[data-theme="3c"] .person:nth-child(even) .avatar { background: #1A9AA0; color: #012732; }
+/* blue: Ocean Blue appears only inside the logo and symbol (no blue token is used) */
+
+/* ── 5 · Quilt ─────────────────────────────────────────────────────────── */
+/* filled buttons: cream text instead of white */
+:root[data-theme="5"] .btn-primary { color: #FBF8F1; }
+/* hero secondary button: filled Ochre with Forest text, not outlined */
+:root[data-theme="5"] .btn-secondary { border: 0; background: #C8912E; color: #22332A; }
+/* project cards: no border, background #F3EEE3 */
+:root[data-theme="5"] .card { border: 0; background: #F3EEE3; }
+/* researcher avatars: quilt tiles, 88x88, object-fit cover, radius 4px */
+:root[data-theme="5"] .avatar { display: none; }
+:root[data-theme="5"] .avatar-tile { display: block; width: 88px; height: 88px; object-fit: cover; border-radius: 4px; margin-bottom: 14px; }
+
+/* ── 6 · Ensemble ──────────────────────────────────────────────────────── */
+/* H1 in two styles: comes from content.h1 (<em> with italic 400) */
+/* buttons: pill shape: --btn-radius is 999px in tokens.css */
+/* hero secondary button: filled Chord with Ink text */
+:root[data-theme="6"] .btn-secondary { border: 0; background: #E8714F; color: #2B2A33; }
+/* project category labels: outlined pills, 2px border per pillar, text Ink */
+:root[data-theme="6"] .card-cat { align-self: flex-start; padding: 5px 16px; border: 2px solid; border-radius: 999px; color: #2B2A33; }
+:root[data-theme="6"] .card--research .card-cat { border-color: #6D4C7D; }
+:root[data-theme="6"] .card--dialogue .card-cat { border-color: #2A7F7A; }
+:root[data-theme="6"] .card--practice .card-cat { border-color: #C8912E; }
+/* researcher avatars (in order) */
+:root[data-theme="6"] .person:nth-child(1) .avatar { background: #6D4C7D; color: #FFFFFF; }
+:root[data-theme="6"] .person:nth-child(2) .avatar { background: #2A7F7A; color: #FFFFFF; }
+:root[data-theme="6"] .person:nth-child(3) .avatar { background: #C8912E; color: #2B2A33; }
+:root[data-theme="6"] .person:nth-child(4) .avatar { background: #E8714F; color: #2B2A33; }

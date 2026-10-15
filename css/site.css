@@ -1,0 +1,110 @@
+/* Shared page, reproducing brand/source/template.dc.html.
+   Colours, fonts and radii come only from brand/tokens.css; the fixed sizes and
+   spacing are the template's own constants. */
+
+body { margin: 0; background: var(--bg); }
+:where(a) { color: var(--primary); }
+:where(a:hover) { color: var(--ink); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: 48px; padding-right: 48px; box-sizing: border-box; }
+
+.page {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body-font);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Images whose src is set by js/app.js stay invisible until then. */
+img:not([src]) { visibility: hidden; }
+
+/* Header */
+.site-header { background: var(--header-bg); border-bottom: var(--header-border); }
+.header-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px; padding-top: 18px; padding-bottom: 18px; }
+.logo-link { display: block; line-height: 0; }
+.logo { height: var(--logo-h); width: auto; display: block; }
+.nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 30px; font-size: 15px; }
+.nav-link { color: var(--ink); text-decoration: none; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; border-radius: var(--btn-radius); text-decoration: none; font-weight: var(--btn-weight); }
+.btn-sm { min-height: 44px; padding: 0 20px; }
+.btn-md { min-height: 48px; padding: 0 26px; }
+.btn-lg { min-height: 52px; padding: 0 30px; }
+.btn-primary { background: var(--primary); color: #FFFFFF; }
+.btn-secondary { border: 1.5px solid var(--primary); color: var(--primary); box-sizing: border-box; }
+.btn-call { background: var(--accent); color: var(--ink); }
+
+/* Headings */
+.h1 { margin: 0; font-family: var(--head-font); font-style: var(--h1-style); font-weight: var(--h1-weight); font-size: var(--h1-size); line-height: 1.06; letter-spacing: var(--h-track); color: var(--ink); }
+.h2 { margin: 0; font-family: var(--head-font); font-style: var(--h2-style); font-weight: var(--h2-weight); font-size: 40px; line-height: 1.15; letter-spacing: var(--h-track); color: var(--ink); }
+
+/* Hero */
+.hero { padding-top: 96px; padding-bottom: 104px; }
+.hero-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 56px; }
+.hero-copy { flex: 1 1 520px; max-width: 660px; }
+.hero-rule { width: 56px; height: 2px; background: var(--accent); margin-top: 32px; margin-bottom: 28px; }
+.lead { margin: 0; max-width: 34em; font-size: 20px; line-height: 1.55; color: var(--body); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+.hero-art { flex: 0 1 380px; display: flex; justify-content: center; }
+.hero-symbol { width: 320px; height: auto; display: block; }
+
+/* About: Research / Dialogue / Practice */
+.about { background: var(--tint); padding-top: 88px; padding-bottom: 96px; }
+.about-title { max-width: 18em; }
+.cols3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pillars { gap: 48px; margin-top: 56px; }
+.pillar-mark { width: 40px; height: 4px; border-radius: 2px; }
+.pillar--research .pillar-mark { background: var(--p1); }
+.pillar--dialogue .pillar-mark { background: var(--p2); }
+.pillar--practice .pillar-mark { background: var(--p3); }
+.pillar-title { margin: 20px 0 10px; font-family: var(--head-font); font-style: var(--h2-style); font-weight: var(--h3-weight); font-size: 26px; line-height: 1.2; color: var(--ink); }
+.pillar-text { margin: 0; color: var(--body); }
+
+/* Projects */
+.projects { padding-top: 96px; padding-bottom: 96px; }
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 32px; }
+.more { font-size: 16px; font-weight: var(--btn-weight); }
+.cards { gap: 24px; margin-top: 44px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.card-cat { margin: 0; font-size: 14px; font-weight: var(--btn-weight); color: var(--primary); }
+.card-title { margin: 0; font-family: var(--head-font); font-style: var(--h2-style); font-weight: var(--h3-weight); font-size: 24px; line-height: 1.25; color: var(--ink); }
+.card-text { margin: 0; font-size: 16px; color: var(--body); }
+.card-meta { margin: auto 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--body); }
+
+/* Open call band */
+.call { background: var(--band); color: var(--band-text); padding-top: 88px; padding-bottom: 88px; }
+.call-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px 64px; }
+.call-copy { flex: 1 1 520px; max-width: 680px; }
+.call-label { margin: 0 0 14px; font-size: 15px; font-weight: var(--btn-weight); color: var(--band-muted); }
+.call-title { color: var(--band-text); }
+.call-text { margin: 18px 0 0; font-size: 18px; color: var(--band-text); }
+
+/* People */
+.people { padding-top: 96px; padding-bottom: 96px; }
+.cols4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.persons { gap: 32px; margin-top: 44px; }
+.person { display: flex; flex-direction: column; gap: 4px; }
+.avatar { width: 88px; height: 88px; border-radius: 50%; background: var(--avatar); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: var(--head-font); font-size: 28px; margin-bottom: 14px; }
+.avatar-tile { display: none; }
+.person-name { margin: 0; font-weight: var(--btn-weight); }
+.person-meta { margin: 0; font-size: 15px; color: var(--body); }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); padding-top: 64px; padding-bottom: 48px; }
+.foot { display: grid; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); gap: 40px; }
+.foot-about { margin: 20px 0 0; max-width: 24em; font-size: 15px; color: var(--body); }
+.foot-col { display: flex; flex-direction: column; gap: 8px; font-size: 15px; }
+.foot-col a { color: var(--body); }
+.foot-title { margin: 0 0 4px; font-weight: var(--btn-weight); }
+.copyright { margin: 56px 0 0; font-size: 14px; color: var(--body); }
+
+@media (max-width: 900px) {
+  .wrap { padding-left: 24px; padding-right: 24px; }
+  .cols3, .cols4, .foot { grid-template-columns: minmax(0, 1fr); }
+  .hero-art { display: none; }
+  .h1 { font-size: 44px; }
+}

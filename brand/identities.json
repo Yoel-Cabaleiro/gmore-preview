@@ -1,0 +1,899 @@
+{
+  "_readme": "Source of truth for each identity. Values come from the identity sheets in /sheets. \"source\" says whether a colour is printed on the sheet, measured from the sheet image, or chosen for the mockup. The rendered reference for every identity is /reference/<id>.html; when this file and the reference disagree, the reference wins.",
+  "token_roles": {
+    "bg": "page background",
+    "header_bg": "header background",
+    "header_border": "header bottom border (CSS shorthand)",
+    "surface": "card background",
+    "tint": "background of the \"about\" band",
+    "line": "hairlines and card borders",
+    "primary": "primary buttons, links, category labels",
+    "accent": "accent: hero rule, focus ring, open-call button",
+    "ink": "headings and main text",
+    "body": "secondary text",
+    "band": "open-call band background",
+    "band_text": "open-call band text",
+    "band_muted": "open-call band small label",
+    "avatar": "avatar background (default)",
+    "p1": "pillar marker Research",
+    "p2": "pillar marker Dialogue",
+    "p3": "pillar marker Practice",
+    "radius": "card radius",
+    "btn_radius": "button radius",
+    "head_font": "heading font stack",
+    "body_font": "body font stack",
+    "h1_style": "H1 font-style",
+    "h1_weight": "H1 weight",
+    "h1_size": "H1 size at desktop (44px under 900px)",
+    "h2_style": "H2/H3 font-style",
+    "h2_weight": "H2 weight (40px)",
+    "h3_weight": "H3 weight",
+    "h_track": "heading letter-spacing",
+    "btn_weight": "button and label weight",
+    "logo_h": "logo height in header and footer"
+  },
+  "identities": [
+    {
+      "id": "1",
+      "name": "Open Circle (gradient enso)",
+      "group": "1",
+      "sheet": "sheets/1-open-circle.png",
+      "reference": "reference/1.html",
+      "palette": [
+        {
+          "name": "Forest",
+          "hex": "#1F684A",
+          "source": "sheet"
+        },
+        {
+          "name": "Sage",
+          "hex": "#8FB79A",
+          "source": "sheet"
+        },
+        {
+          "name": "Mist",
+          "hex": "#DCE8DF",
+          "source": "sheet"
+        },
+        {
+          "name": "Ochre",
+          "hex": "#D9A441",
+          "source": "sheet"
+        },
+        {
+          "name": "Paper",
+          "hex": "#FAFBF8",
+          "source": "sheet"
+        },
+        {
+          "name": "Text ink",
+          "hex": "#102624",
+          "source": "sampled"
+        },
+        {
+          "name": "Body grey",
+          "hex": "#535A60",
+          "source": "sampled"
+        }
+      ],
+      "typography": {
+        "google_fonts_css": "https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@400;700&display=swap",
+        "heading": "'Crimson Pro', Georgia, serif",
+        "body": "'Lato', 'Helvetica Neue', sans-serif",
+        "note": "Sheet names no typeface; Crimson Pro + Lato chosen as closest match."
+      },
+      "assets": {
+        "logo": "assets/1-open-circle/logo.png",
+        "symbol": "assets/1-open-circle/symbol.png"
+      },
+      "content": {
+        "h1": "An Open Circle for a More Ethical World"
+      },
+      "tokens": {
+        "bg": "#FAFBF8",
+        "header_bg": "#FFFFFF",
+        "header_border": "1px solid #DCE8DF",
+        "surface": "#FFFFFF",
+        "tint": "#DCE8DF",
+        "line": "#DCE8DF",
+        "primary": "#1F684A",
+        "accent": "#D9A441",
+        "ink": "#102624",
+        "body": "#535A60",
+        "band": "#1F684A",
+        "band_text": "#FAFBF8",
+        "band_muted": "#DCE8DF",
+        "avatar": "#8FB79A",
+        "p1": "#1F684A",
+        "p2": "#8FB79A",
+        "p3": "#D9A441",
+        "radius": "6px",
+        "btn_radius": "4px",
+        "head_font": "'Crimson Pro', Georgia, serif",
+        "body_font": "'Lato', 'Helvetica Neue', sans-serif",
+        "h1_style": "normal",
+        "h1_weight": "400",
+        "h1_size": "64px",
+        "h2_style": "normal",
+        "h2_weight": "400",
+        "h3_weight": "500",
+        "h_track": "-0.005em",
+        "btn_weight": "700",
+        "logo_h": "60px"
+      },
+      "overrides": []
+    },
+    {
+      "id": "2",
+      "name": "Interwoven perspectives",
+      "group": "2",
+      "sheet": "sheets/2-interwoven.png",
+      "reference": "reference/2.html",
+      "palette": [
+        {
+          "name": "Pine",
+          "hex": "#1F684A",
+          "source": "sheet"
+        },
+        {
+          "name": "Teal",
+          "hex": "#2A8F8A",
+          "source": "sheet"
+        },
+        {
+          "name": "Sage",
+          "hex": "#C7DABD",
+          "source": "sheet"
+        },
+        {
+          "name": "Ochre",
+          "hex": "#D9A441",
+          "source": "sheet"
+        },
+        {
+          "name": "Paper",
+          "hex": "#F7F8F5",
+          "source": "sheet"
+        },
+        {
+          "name": "Text ink",
+          "hex": "#052C27",
+          "source": "sampled"
+        },
+        {
+          "name": "Body grey",
+          "hex": "#4C5457",
+          "source": "sampled"
+        }
+      ],
+      "typography": {
+        "google_fonts_css": "https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@400;700&display=swap",
+        "heading": "'Crimson Pro', Georgia, serif",
+        "body": "'Lato', 'Helvetica Neue', sans-serif",
+        "note": "Sheet names no typeface; Crimson Pro + Lato chosen as closest match."
+      },
+      "assets": {
+        "logo": "assets/2-interwoven/logo.png",
+        "symbol": "assets/2-interwoven/symbol.png"
+      },
+      "content": {
+        "h1": "Different perspectives. A more human future."
+      },
+      "tokens": {
+        "bg": "#F7F8F5",
+        "header_bg": "#FFFFFF",
+        "header_border": "3px solid #D9A441",
+        "surface": "#FFFFFF",
+        "tint": "#C7DABD",
+        "line": "#C7DABD",
+        "primary": "#1F684A",
+        "accent": "#D9A441",
+        "ink": "#052C27",
+        "body": "#4C5457",
+        "band": "#1F684A",
+        "band_text": "#F7F8F5",
+        "band_muted": "#C7DABD",
+        "avatar": "#C7DABD",
+        "p1": "#1F684A",
+        "p2": "#2A8F8A",
+        "p3": "#D9A441",
+        "radius": "8px",
+        "btn_radius": "6px",
+        "head_font": "'Crimson Pro', Georgia, serif",
+        "body_font": "'Lato', 'Helvetica Neue', sans-serif",
+        "h1_style": "normal",
+        "h1_weight": "400",
+        "h1_size": "64px",
+        "h2_style": "normal",
+        "h2_weight": "400",
+        "h3_weight": "500",
+        "h_track": "-0.005em",
+        "btn_weight": "700",
+        "logo_h": "64px"
+      },
+      "overrides": []
+    },
+    {
+      "id": "3",
+      "name": "Many perspectives (brushstrokes)",
+      "group": "3",
+      "sheet": "sheets/3-many-perspectives.png",
+      "reference": "reference/3.html",
+      "palette": [
+        {
+          "name": "Forest Green",
+          "hex": "#1E8A5A",
+          "source": "sheet"
+        },
+        {
+          "name": "Ocean Blue",
+          "hex": "#2440A8",
+          "source": "sheet"
+        },
+        {
+          "name": "Teal",
+          "hex": "#1A9AA0",
+          "source": "sheet"
+        },
+        {
+          "name": "Ochre",
+          "hex": "#E0A93B",
+          "source": "sheet"
+        },
+        {
+          "name": "Sage",
+          "hex": "#DCE8DF",
+          "source": "sheet"
+        },
+        {
+          "name": "Page ground",
+          "hex": "#F8FAF7",
+          "source": "sampled"
+        },
+        {
+          "name": "Text ink",
+          "hex": "#012732",
+          "source": "sampled"
+        },
+        {
+          "name": "Body grey",
+          "hex": "#5A6266",
+          "source": "chosen: sampled #687073 darkened for 4.5:1 contrast on Sage"
+        }
+      ],
+      "typography": {
+        "google_fonts_css": "https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@400;700&display=swap",
+        "heading": "'Crimson Pro', Georgia, serif",
+        "body": "'Lato', 'Helvetica Neue', sans-serif",
+        "note": "Sheet names no typeface; Crimson Pro (italic headings, as on the sheet) + Lato chosen as closest match."
+      },
+      "assets": {
+        "logo": "assets/3-many-perspectives/logo.png",
+        "symbol": "assets/3-many-perspectives/symbol.png"
+      },
+      "content": {
+        "h1": "Many perspectives. A stronger, more ethical world."
+      },
+      "tokens": {
+        "bg": "#F8FAF7",
+        "header_bg": "#FFFFFF",
+        "header_border": "1px solid #DCE8DF",
+        "surface": "#FFFFFF",
+        "tint": "#DCE8DF",
+        "line": "#DCE8DF",
+        "primary": "#2440A8",
+        "accent": "#E0A93B",
+        "ink": "#012732",
+        "body": "#5A6266",
+        "band": "#2440A8",
+        "band_text": "#FFFFFF",
+        "band_muted": "#DCE8DF",
+        "avatar": "#DCE8DF",
+        "p1": "#1E8A5A",
+        "p2": "#2440A8",
+        "p3": "#1A9AA0",
+        "radius": "6px",
+        "btn_radius": "4px",
+        "head_font": "'Crimson Pro', Georgia, serif",
+        "body_font": "'Lato', 'Helvetica Neue', sans-serif",
+        "h1_style": "italic",
+        "h1_weight": "400",
+        "h1_size": "64px",
+        "h2_style": "italic",
+        "h2_weight": "400",
+        "h3_weight": "500",
+        "h_track": "-0.005em",
+        "btn_weight": "700",
+        "logo_h": "60px"
+      },
+      "overrides": []
+    },
+    {
+      "id": "3b",
+      "name": "Many perspectives: colour shared out",
+      "group": "3",
+      "sheet": "sheets/3-many-perspectives.png",
+      "reference": "reference/3b.html",
+      "palette": [
+        {
+          "name": "Forest Green",
+          "hex": "#1E8A5A",
+          "source": "sheet"
+        },
+        {
+          "name": "Ocean Blue",
+          "hex": "#2440A8",
+          "source": "sheet"
+        },
+        {
+          "name": "Teal",
+          "hex": "#1A9AA0",
+          "source": "sheet"
+        },
+        {
+          "name": "Ochre",
+          "hex": "#E0A93B",
+          "source": "sheet"
+        },
+        {
+          "name": "Sage",
+          "hex": "#DCE8DF",
+          "source": "sheet"
+        },
+        {
+          "name": "Page ground",
+          "hex": "#F8FAF7",
+          "source": "sampled"
+        },
+        {
+          "name": "Text ink",
+          "hex": "#012732",
+          "source": "sampled"
+        },
+        {
+          "name": "Body grey",
+          "hex": "#5A6266",
+          "source": "chosen: sampled #687073 darkened for 4.5:1 contrast on Sage"
+        }
+      ],
+      "typography": {
+        "google_fonts_css": "https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@400;700&display=swap",
+        "heading": "'Crimson Pro', Georgia, serif",
+        "body": "'Lato', 'Helvetica Neue', sans-serif",
+        "note": "Sheet names no typeface; Crimson Pro (italic headings, as on the sheet) + Lato chosen as closest match."
+      },
+      "assets": {
+        "logo": "assets/3-many-perspectives/logo.png",
+        "symbol": "assets/3-many-perspectives/symbol.png"
+      },
+      "content": {
+        "h1": "Many perspectives. A stronger, more ethical world."
+      },
+      "tokens": {
+        "bg": "#F8FAF7",
+        "header_bg": "#FFFFFF",
+        "header_border": "4px solid #1E8A5A; border-image: linear-gradient(90deg, #1E8A5A 0 25%, #1A9AA0 25% 50%, #2440A8 50% 75%, #E0A93B 75% 100%) 1",
+        "surface": "#FFFFFF",
+        "tint": "#DCE8DF",
+        "line": "#DCE8DF",
+        "primary": "#012732",
+        "accent": "#E0A93B",
+        "ink": "#012732",
+        "body": "#5A6266",
+        "band": "#012732",
+        "band_text": "#FFFFFF",
+        "band_muted": "#E0A93B",
+        "avatar": "#DCE8DF",
+        "p1": "#1E8A5A",
+        "p2": "#1A9AA0",
+        "p3": "#E0A93B",
+        "radius": "6px",
+        "btn_radius": "4px",
+        "head_font": "'Crimson Pro', Georgia, serif",
+        "body_font": "'Lato', 'Helvetica Neue', sans-serif",
+        "h1_style": "italic",
+        "h1_weight": "400",
+        "h1_size": "64px",
+        "h2_style": "italic",
+        "h2_weight": "400",
+        "h3_weight": "500",
+        "h_track": "-0.005em",
+        "btn_weight": "700",
+        "logo_h": "60px"
+      },
+      "overrides": [
+        {
+          "target": "filled buttons (header + hero primary)",
+          "value": "background #E0A93B (Ochre), text #012732"
+        },
+        {
+          "target": "header bottom border and footer top border",
+          "value": "4px stripe: linear-gradient(90deg, #1E8A5A 0 25%, #1A9AA0 25% 50%, #2440A8 50% 75%, #E0A93B 75% 100%)"
+        },
+        {
+          "target": "hero rule under H1",
+          "value": "96x4px, same 4-colour stripe"
+        },
+        {
+          "target": "project cards",
+          "value": "border-top 6px: Research #1E8A5A, Dialogue #1A9AA0, Practice #E0A93B; category label in ink"
+        },
+        {
+          "target": "researcher avatars (in order)",
+          "value": "#1E8A5A/white, #1A9AA0/#012732, #2440A8/white, #E0A93B/#012732"
+        },
+        {
+          "target": "open-call band",
+          "value": "background #012732 (wordmark ink), label #E0A93B, button Ochre with ink text"
+        }
+      ]
+    },
+    {
+      "id": "3c",
+      "name": "Many perspectives: greens and teal",
+      "group": "3",
+      "sheet": "sheets/3-many-perspectives.png",
+      "reference": "reference/3c.html",
+      "palette": [
+        {
+          "name": "Forest Green",
+          "hex": "#1E8A5A",
+          "source": "sheet"
+        },
+        {
+          "name": "Ocean Blue",
+          "hex": "#2440A8",
+          "source": "sheet"
+        },
+        {
+          "name": "Teal",
+          "hex": "#1A9AA0",
+          "source": "sheet"
+        },
+        {
+          "name": "Ochre",
+          "hex": "#E0A93B",
+          "source": "sheet"
+        },
+        {
+          "name": "Sage",
+          "hex": "#DCE8DF",
+          "source": "sheet"
+        },
+        {
+          "name": "Page ground",
+          "hex": "#F8FAF7",
+          "source": "sampled"
+        },
+        {
+          "name": "Text ink",
+          "hex": "#012732",
+          "source": "sampled"
+        },
+        {
+          "name": "Body grey",
+          "hex": "#5A6266",
+          "source": "chosen: sampled #687073 darkened for 4.5:1 contrast on Sage"
+        }
+      ],
+      "typography": {
+        "google_fonts_css": "https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;1,400;1,500&family=Lato:wght@400;700&display=swap",
+        "heading": "'Crimson Pro', Georgia, serif",
+        "body": "'Lato', 'Helvetica Neue', sans-serif",
+        "note": "Sheet names no typeface; Crimson Pro (italic headings, as on the sheet) + Lato chosen as closest match."
+      },
+      "assets": {
+        "logo": "assets/3-many-perspectives/logo.png",
+        "symbol": "assets/3-many-perspectives/symbol.png"
+      },
+      "content": {
+        "h1": "Many perspectives. A stronger, more ethical world."
+      },
+      "tokens": {
+        "bg": "#F8FAF7",
+        "header_bg": "#FFFFFF",
+        "header_border": "4px solid #1E8A5A; border-image: linear-gradient(90deg, #1E8A5A 0 50%, #1A9AA0 50% 88%, #E0A93B 88% 100%) 1",
+        "surface": "#FFFFFF",
+        "tint": "#DCE8DF",
+        "line": "#DCE8DF",
+        "primary": "#012732",
+        "accent": "#E0A93B",
+        "ink": "#012732",
+        "body": "#5A6266",
+        "band": "#1A9AA0",
+        "band_text": "#012732",
+        "band_muted": "#012732",
+        "avatar": "#DCE8DF",
+        "p1": "#1E8A5A",
+        "p2": "#1A9AA0",
+        "p3": "#E0A93B",
+        "radius": "6px",
+        "btn_radius": "4px",
+        "head_font": "'Crimson Pro', Georgia, serif",
+        "body_font": "'Lato', 'Helvetica Neue', sans-serif",
+        "h1_style": "italic",
+        "h1_weight": "400",
+        "h1_size": "64px",
+        "h2_style": "italic",
+        "h2_weight": "400",
+        "h3_weight": "500",
+        "h_track": "-0.005em",
+        "btn_weight": "700",
+        "logo_h": "60px"
+      },
+      "overrides": [
+        {
+          "target": "H1, H2, H3 on light backgrounds",
+          "value": "color #1E8A5A (Forest Green)"
+        },
+        {
+          "target": "filled buttons (header + hero primary)",
+          "value": "background #1A9AA0 (Teal), text #012732"
+        },
+        {
+          "target": "open-call band",
+          "value": "background #1A9AA0, all text #012732, button background #012732 with white text"
+        },
+        {
+          "target": "header bottom border and footer top border",
+          "value": "4px stripe: linear-gradient(90deg, #1E8A5A 0 50%, #1A9AA0 50% 88%, #E0A93B 88% 100%)"
+        },
+        {
+          "target": "hero rule under H1",
+          "value": "96x4px, same 3-colour stripe"
+        },
+        {
+          "target": "project cards",
+          "value": "border-top 6px: Research #1E8A5A, Dialogue #1A9AA0, Practice #E0A93B"
+        },
+        {
+          "target": "researcher avatars (in order)",
+          "value": "#1E8A5A/white, #1A9AA0/#012732, #1E8A5A/white, #1A9AA0/#012732"
+        },
+        {
+          "target": "blue",
+          "value": "Ocean Blue appears only inside the logo and symbol"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Open circle (geometric)",
+      "group": "4",
+      "sheet": "sheets/4-open-circle-geometric.png",
+      "reference": "reference/4.html",
+      "palette": [
+        {
+          "name": "Pine",
+          "hex": "#1F6B4A",
+          "source": "sheet"
+        },
+        {
+          "name": "Seat ochre",
+          "hex": "#D9A441",
+          "source": "sheet"
+        },
+        {
+          "name": "Ink",
+          "hex": "#133A2E",
+          "source": "sheet"
+        },
+        {
+          "name": "Sage",
+          "hex": "#DCE8DF",
+          "source": "sheet"
+        },
+        {
+          "name": "Paper",
+          "hex": "#FAFBF8",
+          "source": "sheet"
+        }
+      ],
+      "typography": {
+        "google_fonts_css": "https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap",
+        "heading": "'Jost', 'Futura', sans-serif",
+        "body": "'Jost', 'Futura', sans-serif",
+        "note": "Sheet names no typeface; Jost matches the sheet lettering."
+      },
+      "assets": {
+        "logo": "assets/4-open-circle-geometric/logo.png",
+        "symbol": "assets/4-open-circle-geometric/symbol.png"
+      },
+      "content": {
+        "h1": "There is always a seat in the circle."
+      },
+      "tokens": {
+        "bg": "#FAFBF8",
+        "header_bg": "#FFFFFF",
+        "header_border": "3px solid #D9A441",
+        "surface": "#FFFFFF",
+        "tint": "#DCE8DF",
+        "line": "#DCE8DF",
+        "primary": "#1F6B4A",
+        "accent": "#D9A441",
+        "ink": "#133A2E",
+        "body": "#133A2E",
+        "band": "#133A2E",
+        "band_text": "#FAFBF8",
+        "band_muted": "#DCE8DF",
+        "avatar": "#DCE8DF",
+        "p1": "#1F6B4A",
+        "p2": "#D9A441",
+        "p3": "#133A2E",
+        "radius": "12px",
+        "btn_radius": "8px",
+        "head_font": "'Jost', 'Futura', sans-serif",
+        "body_font": "'Jost', 'Futura', sans-serif",
+        "h1_style": "normal",
+        "h1_weight": "500",
+        "h1_size": "60px",
+        "h2_style": "normal",
+        "h2_weight": "500",
+        "h3_weight": "500",
+        "h_track": "-0.01em",
+        "btn_weight": "500",
+        "logo_h": "52px"
+      },
+      "overrides": []
+    },
+    {
+      "id": "5",
+      "name": "Quilt",
+      "group": "5",
+      "sheet": "sheets/5-quilt.png",
+      "reference": "reference/5.html",
+      "palette": [
+        {
+          "name": "Forest",
+          "hex": "#22332A",
+          "source": "sheet"
+        },
+        {
+          "name": "Ochre",
+          "hex": "#C8912E",
+          "source": "sheet"
+        },
+        {
+          "name": "Terracotta",
+          "hex": "#B8603E",
+          "source": "sheet"
+        },
+        {
+          "name": "Sky",
+          "hex": "#7FA7C9",
+          "source": "sampled (sheet shows no hex)"
+        },
+        {
+          "name": "Sage",
+          "hex": "#A9BBA2",
+          "source": "sampled (sheet shows no hex)"
+        },
+        {
+          "name": "Blush",
+          "hex": "#E8C9B5",
+          "source": "sampled (sheet shows no hex)"
+        },
+        {
+          "name": "Cream page",
+          "hex": "#FBF8F1",
+          "source": "sampled"
+        },
+        {
+          "name": "Card beige",
+          "hex": "#F3EEE3",
+          "source": "sampled"
+        },
+        {
+          "name": "Line",
+          "hex": "#E2DACB",
+          "source": "sampled"
+        },
+        {
+          "name": "Body grey",
+          "hex": "#4C594F",
+          "source": "sampled"
+        }
+      ],
+      "typography": {
+        "google_fonts_css": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Nunito+Sans:wght@400;700&display=swap",
+        "heading": "'Outfit', 'Helvetica Neue', sans-serif",
+        "body": "'Nunito Sans', 'Helvetica Neue', sans-serif",
+        "note": "Sheet names no typeface; Outfit (heavy) + Nunito Sans chosen as closest match."
+      },
+      "assets": {
+        "logo": "assets/5-quilt/logo.png",
+        "symbol": "assets/5-quilt/symbol.png",
+        "avatar_tiles": [
+          "assets/5-quilt/tile-1.png",
+          "assets/5-quilt/tile-2.png",
+          "assets/5-quilt/tile-3.png",
+          "assets/5-quilt/tile-4.png"
+        ]
+      },
+      "content": {
+        "h1": "Every member adds a piece."
+      },
+      "tokens": {
+        "bg": "#FBF8F1",
+        "header_bg": "#FBF8F1",
+        "header_border": "1px solid #E2DACB",
+        "surface": "#F3EEE3",
+        "tint": "#F3EEE3",
+        "line": "#E2DACB",
+        "primary": "#22332A",
+        "accent": "#C8912E",
+        "ink": "#22332A",
+        "body": "#4C594F",
+        "band": "#22332A",
+        "band_text": "#FBF8F1",
+        "band_muted": "#C8912E",
+        "avatar": "#F3EEE3",
+        "p1": "#B8603E",
+        "p2": "#C8912E",
+        "p3": "#7FA7C9",
+        "radius": "10px",
+        "btn_radius": "8px",
+        "head_font": "'Outfit', 'Helvetica Neue', sans-serif",
+        "body_font": "'Nunito Sans', 'Helvetica Neue', sans-serif",
+        "h1_style": "normal",
+        "h1_weight": "800",
+        "h1_size": "64px",
+        "h2_style": "normal",
+        "h2_weight": "800",
+        "h3_weight": "700",
+        "h_track": "-0.02em",
+        "btn_weight": "700",
+        "logo_h": "52px"
+      },
+      "overrides": [
+        {
+          "target": "filled buttons",
+          "value": "text colour #FBF8F1 (cream) instead of white"
+        },
+        {
+          "target": "hero secondary button",
+          "value": "filled Ochre #C8912E with Forest text (as on the sheet), not outlined"
+        },
+        {
+          "target": "project cards",
+          "value": "no border, background #F3EEE3"
+        },
+        {
+          "target": "researcher avatars",
+          "value": "quilt tiles assets/5-quilt/tile-1..4.png, 88x88, object-fit cover, radius 4px (square, not round)"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Ensemble",
+      "group": "6",
+      "sheet": "sheets/6-ensemble.png",
+      "reference": "reference/6.html",
+      "palette": [
+        {
+          "name": "Ink",
+          "hex": "#2B2A33",
+          "source": "sheet"
+        },
+        {
+          "name": "Chord",
+          "hex": "#E8714F",
+          "source": "sheet"
+        },
+        {
+          "name": "Plum",
+          "hex": "#6D4C7D",
+          "source": "sheet"
+        },
+        {
+          "name": "Teal",
+          "hex": "#2A7F7A",
+          "source": "sheet"
+        },
+        {
+          "name": "Ochre",
+          "hex": "#C8912E",
+          "source": "sheet"
+        },
+        {
+          "name": "Rose",
+          "hex": "#C97B84",
+          "source": "sheet (not used in mockup)"
+        },
+        {
+          "name": "Slate",
+          "hex": "#4F6D8C",
+          "source": "sheet (not used in mockup)"
+        },
+        {
+          "name": "Sage",
+          "hex": "#7E9477",
+          "source": "sheet (not used in mockup)"
+        },
+        {
+          "name": "Page ground",
+          "hex": "#F4F6F3",
+          "source": "sampled"
+        },
+        {
+          "name": "Line",
+          "hex": "#E2E4E0",
+          "source": "chosen"
+        },
+        {
+          "name": "Body grey",
+          "hex": "#55545E",
+          "source": "chosen"
+        }
+      ],
+      "typography": {
+        "google_fonts_css": "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:wght@400;700&display=swap",
+        "heading": "'Playfair Display', Georgia, serif",
+        "body": "'Nunito Sans', 'Helvetica Neue', sans-serif",
+        "note": "Sheet names no typeface; Playfair Display matches the wordmark, Nunito Sans the descriptor."
+      },
+      "assets": {
+        "logo": "assets/6-ensemble/logo.png",
+        "symbol": "assets/6-ensemble/symbol.png"
+      },
+      "content": {
+        "h1": "<em style=\"font-style: italic; font-weight: 400\">Different voices.</em> One conversation."
+      },
+      "tokens": {
+        "bg": "#F4F6F3",
+        "header_bg": "#FFFFFF",
+        "header_border": "4px solid #E8714F",
+        "surface": "#FFFFFF",
+        "tint": "#FFFFFF",
+        "line": "#E2E4E0",
+        "primary": "#2B2A33",
+        "accent": "#E8714F",
+        "ink": "#2B2A33",
+        "body": "#55545E",
+        "band": "#2B2A33",
+        "band_text": "#FFFFFF",
+        "band_muted": "#E8714F",
+        "avatar": "#FFFFFF",
+        "p1": "#6D4C7D",
+        "p2": "#2A7F7A",
+        "p3": "#C8912E",
+        "radius": "12px",
+        "btn_radius": "999px",
+        "head_font": "'Playfair Display', Georgia, serif",
+        "body_font": "'Nunito Sans', 'Helvetica Neue', sans-serif",
+        "h1_style": "normal",
+        "h1_weight": "700",
+        "h1_size": "64px",
+        "h2_style": "normal",
+        "h2_weight": "700",
+        "h3_weight": "400",
+        "h_track": "-0.01em",
+        "btn_weight": "700",
+        "logo_h": "48px"
+      },
+      "overrides": [
+        {
+          "target": "H1",
+          "value": "first sentence italic weight 400, second sentence roman 700: <em>Different voices.</em> One conversation."
+        },
+        {
+          "target": "hero secondary button",
+          "value": "filled Chord #E8714F with Ink text"
+        },
+        {
+          "target": "buttons",
+          "value": "pill shape (radius 999px)"
+        },
+        {
+          "target": "project category labels",
+          "value": "outlined pills, 2px border: Research #6D4C7D, Dialogue #2A7F7A, Practice #C8912E; text Ink"
+        },
+        {
+          "target": "researcher avatars (in order)",
+          "value": "#6D4C7D/white, #2A7F7A/white, #C8912E/#2B2A33, #E8714F/#2B2A33"
+        }
+      ]
+    }
+  ]
+}

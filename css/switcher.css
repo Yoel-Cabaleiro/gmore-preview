@@ -1,0 +1,93 @@
+/* Floating identity switcher. A preview tool, not part of any identity:
+   it uses its own neutral look and never reads the brand tokens. */
+
+.idsel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: calc(100vw - 32px);
+  font: 14px/1.35 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #FAFAFA;
+  -webkit-font-smoothing: antialiased;
+}
+.idsel *, .idsel *::before { box-sizing: border-box; }
+.idsel p, .idsel ul { margin: 0; padding: 0; }
+.idsel ul { list-style: none; }
+.idsel button { font: inherit; color: inherit; cursor: pointer; margin: 0; border: 0; background: none; text-align: left; }
+.idsel button:focus-visible { outline: 2px solid #8AB4F8; outline-offset: 2px; }
+
+/* Thumbnail of each identity's symbol, on a light chip so every symbol reads. */
+.idsel-thumb { flex: none; width: 32px; height: 32px; padding: 3px; border-radius: 8px; background: #FAFAF7; object-fit: contain; }
+.idsel-num { flex: none; min-width: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* ── Bar (always visible) ─────────────────────────────────────────────── */
+.idsel-bar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  padding: 4px;
+  border-radius: 14px;
+  background: #18181B;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .28), 0 0 0 1px rgba(255, 255, 255, .08);
+}
+.idsel .idsel-step { flex: none; width: 36px; height: 44px; border-radius: 10px; font-size: 20px; line-height: 1; text-align: center; color: #D4D4D8; }
+.idsel-step:hover { background: rgba(255, 255, 255, .1); color: #FFFFFF; }
+.idsel-toggle { display: flex; align-items: center; gap: 10px; min-width: 0; height: 44px; padding: 0 10px 0 6px; border-radius: 10px; }
+.idsel-toggle:hover { background: rgba(255, 255, 255, .1); }
+.idsel-now { display: flex; flex-direction: column; min-width: 0; }
+.idsel-kicker { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #A1A1AA; }
+.idsel-kicker b { color: #FAFAFA; letter-spacing: 0; text-transform: none; font-size: 12px; margin-left: 2px; }
+.idsel-now-name { max-width: 300px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-weight: 600; }
+.idsel-chev { flex: none; width: 10px; height: 10px; margin-left: 4px; border: solid #A1A1AA; border-width: 2px 2px 0 0; transform: translateY(2px) rotate(-45deg); transition: transform .15s; }
+.idsel.is-open .idsel-chev { transform: translateY(-2px) rotate(135deg); }
+
+/* ── Panel ────────────────────────────────────────────────────────────── */
+.idsel-panel {
+  width: 360px;
+  max-width: 100%;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  padding: 16px;
+  border-radius: 16px;
+  background: #18181B;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .32), 0 0 0 1px rgba(255, 255, 255, .08);
+}
+.idsel-panel[hidden] { display: none; }
+.idsel .idsel-title { font-size: 16px; font-weight: 700; }
+.idsel .idsel-sub { margin-top: 2px; color: #A1A1AA; font-size: 13px; }
+.idsel .idsel-list { display: flex; flex-direction: column; gap: 4px; margin-top: 14px; }
+
+.idsel-opt { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 6px 10px 6px 6px; border-radius: 10px; }
+.idsel-opt:hover { background: rgba(255, 255, 255, .08); }
+.idsel-opt[aria-pressed="true"] { background: #FAFAFA; color: #18181B; }
+.idsel-opt[aria-pressed="true"]::after { content: ""; flex: none; width: 6px; height: 11px; margin-left: auto; border: solid #18181B; border-width: 0 2px 2px 0; transform: rotate(45deg) translateY(-2px); }
+.idsel-label { min-width: 0; }
+
+/* Group 3: header plus its sub-variants, indented on a rule. */
+.idsel-group { padding: 6px 0 4px; border-radius: 12px; background: rgba(255, 255, 255, .05); }
+.idsel-group-head { display: flex; align-items: center; gap: 10px; padding: 0 10px 6px 6px; }
+.idsel-group-head .idsel-label { font-weight: 600; }
+.idsel-badge { flex: none; margin-left: auto; padding: 2px 8px; border-radius: 999px; background: rgba(255, 255, 255, .1); color: #D4D4D8; font-size: 11px; }
+.idsel .idsel-variants { margin: 0 6px 0 22px; padding-left: 10px; border-left: 2px solid rgba(255, 255, 255, .14); display: flex; flex-direction: column; gap: 2px; }
+.idsel-variants .idsel-opt { min-height: 38px; padding-left: 10px; }
+
+.idsel-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, .1); }
+.idsel .idsel-copy { height: 34px; padding: 0 12px; border-radius: 8px; background: rgba(255, 255, 255, .1); font-weight: 600; font-size: 13px; }
+.idsel .idsel-copy:hover { background: rgba(255, 255, 255, .18); }
+.idsel .idsel-hint { color: #71717A; font-size: 12px; }
+
+@media (max-width: 480px) {
+  .idsel { right: 12px; bottom: 12px; left: 12px; max-width: none; }
+  .idsel-bar { align-self: stretch; }
+  .idsel-toggle { flex: 1; }
+  .idsel-now-name { max-width: none; }
+  .idsel-panel { width: 100%; max-height: calc(100vh - 96px); }
+  .idsel .idsel-hint { display: none; }
+}
+@media print { .idsel { display: none; } }
