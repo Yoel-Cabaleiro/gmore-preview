@@ -129,11 +129,11 @@ const check = (name, ok, detail = '') => { checks.push(`- ${ok ? 'PASS' : 'FAIL'
   check('URL updated to ?theme=5', new URL(page.url()).searchParams.get('theme') === '5', page.url());
   check('H1 swapped', (await page.textContent('.hero-title')) === 'Every member adds a piece.');
   check('bar shows current identity', (await page.textContent('.idsel-now-name')) === 'Quilt');
-  await page.click('.idsel-step[aria-label="Identidad siguiente"]');
+  await page.click('.idsel-step[aria-label="Next identity"]');
   check('next arrow goes 5 → 6', await theme() === '6');
-  await page.click('.idsel-step[aria-label="Identidad siguiente"]');
+  await page.click('.idsel-step[aria-label="Next identity"]');
   check('next arrow wraps 6 → 1', await theme() === '1');
-  await page.click('.idsel-step[aria-label="Identidad anterior"]');
+  await page.click('.idsel-step[aria-label="Previous identity"]');
   check('previous arrow goes 1 → 6', await theme() === '6');
   await page.keyboard.press('Escape');
   check('Escape collapses switcher', !(await panelOpen()));
@@ -143,6 +143,34 @@ const check = (name, ok, detail = '') => { checks.push(`- ${ok ? 'PASS' : 'FAIL'
   check('toggle opens panel', await panelOpen());
   await page.mouse.click(400, 400);
   check('click on the page closes panel', !(await panelOpen()));
+
+  // Mobile view (desktop only)
+  await page.click('.idsel-viewbtn');
+  const frameEl = page.locator('.idsel-frame');
+  check('phone button opens mobile view', await frameEl.isVisible());
+  check('URL has view=mobile', new URL(page.url()).searchParams.get('view') === 'mobile', page.url());
+  const inner = page.frameLocator('.idsel-frame');
+  await inner.locator('.hero-title').filter({ hasText: /\S/ }).waitFor();
+  const innerFrame = page.frames().find(f => f !== page.mainFrame());
+  check('frame viewport is 390px with no scrollbar', await innerFrame.evaluate(() => document.documentElement.clientWidth) === 390);
+  check('frame has no switcher', await innerFrame.evaluate(() => !document.querySelector('.idsel')));
+  check('frame uses the mobile layout', await innerFrame.evaluate(() => getComputedStyle(document.querySelector('.hero-art')).display === 'none'));
+  await page.click('.idsel-step[aria-label="Next identity"]');
+  await page.waitForTimeout(200);
+  check('theme change reaches the frame', await innerFrame.evaluate(() => document.documentElement.dataset.theme) === await theme());
+  await page.reload({ waitUntil: 'networkidle' });
+  check('reload keeps mobile view', await page.locator('.idsel-frame').isVisible());
+  await page.click('.idsel-viewbtn');
+  check('phone button returns to desktop', await page.locator('.idsel-frame').count() === 0 && !new URL(page.url()).searchParams.has('view'));
+  await context.close();
+}
+{
+  // A real phone opening a shared ?view=mobile link gets the normal responsive page.
+  const context = await browser.newContext({ viewport: { width: 390, height: 800 } });
+  const page = await context.newPage();
+  await page.goto(`${base}index.html?theme=5&view=mobile`, { waitUntil: 'networkidle' });
+  check('narrow screen ignores view=mobile', await page.locator('.idsel-frame').count() === 0 && !new URL(page.url()).searchParams.has('view'), page.url());
+  check('narrow screen hides the phone button', await page.locator('.idsel-viewbtn').isHidden());
   await context.close();
 }
 report.push('## Behaviour', '', ...checks, '');

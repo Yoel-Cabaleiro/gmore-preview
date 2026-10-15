@@ -8,4 +8,6 @@
   try { stored = localStorage.getItem('gmore-theme'); } catch (e) {}
   var theme = IDS.indexOf(fromUrl) > -1 ? fromUrl : IDS.indexOf(stored) > -1 ? stored : '1';
   document.documentElement.setAttribute('data-theme', theme);
+  // Shown inside the switcher's mobile-view frame (see css/switcher.css).
+  if (window.self !== window.top) document.documentElement.classList.add('is-framed');
 })();

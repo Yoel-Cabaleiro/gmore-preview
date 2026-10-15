@@ -5,6 +5,8 @@ no build step: publish the repo root with GitHub Pages.
 
 - `index.html?theme=3b` opens a given identity (ids: 1, 2, 3, 3b, 3c, 4, 5, 6). The last
   choice is remembered; with neither, identity 1 is shown.
+- On a desktop, the switcher's "Mobile" view (or `&view=mobile`) shows the page in a 390 px
+  phone frame. On phones and narrow windows it is hidden: the page is simply responsive.
 - `brand/` is the brand handoff package, used as is. Read `brand/BRAND.md` before changing anything.
 - `css/site.css` is the shared page (tokens from `brand/tokens.css`), `css/overrides.css` the
   per-identity overrides from `brand/identities.json`, `css/switcher.css` the floating selector.

@@ -82,6 +82,53 @@
 .idsel .idsel-copy:hover { background: rgba(255, 255, 255, .18); }
 .idsel .idsel-hint { color: #71717A; font-size: 12px; }
 
+/* ── Desktop / mobile view ────────────────────────────────────────────── */
+.idsel-icon { display: inline-flex; flex: none; }
+.idsel-viewrow { display: flex; align-items: center; gap: 10px; margin-top: 14px; }
+.idsel .idsel-viewlabel { flex: none; min-width: 40px; color: #A1A1AA; font-size: 13px; }
+.idsel-segs { display: flex; flex: 1; padding: 3px; gap: 3px; border-radius: 10px; background: rgba(255, 255, 255, .08); }
+.idsel .idsel-seg { display: flex; flex: 1; align-items: center; justify-content: center; gap: 6px; height: 32px; padding: 0 8px; border-radius: 7px; font-size: 13px; white-space: nowrap; color: #D4D4D8; }
+.idsel .idsel-seg:hover { background: rgba(255, 255, 255, .1); }
+.idsel .idsel-seg[aria-pressed="true"] { background: #FAFAFA; color: #18181B; font-weight: 600; }
+.idsel .idsel-viewbtn { flex: none; display: flex; align-items: center; justify-content: center; width: 40px; height: 44px; margin-left: 2px; border-radius: 10px; color: #D4D4D8; box-shadow: inset 1px 0 rgba(255, 255, 255, .1); }
+.idsel .idsel-viewbtn:hover { background: rgba(255, 255, 255, .1); color: #FFFFFF; }
+.idsel .idsel-viewbtn[aria-pressed="true"] { background: #FAFAFA; color: #18181B; box-shadow: none; }
+
+/* The page shown in a phone-sized frame over a neutral backdrop. */
+.is-mobile-view, .is-mobile-view body { overflow: hidden; }
+.idsel-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 2147482000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  background: #E4E4E7;
+}
+.idsel-phone {
+  box-sizing: content-box;
+  width: 390px;
+  height: min(844px, calc(100vh - 88px));
+  padding: 12px;
+  border-radius: 48px;
+  background: #18181B;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
+}
+.idsel-frame { display: block; width: 100%; height: 100%; border: 0; border-radius: 36px; background: #FFFFFF; }
+.idsel-stage-label { margin: 0; font: 13px/1.3 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #52525B; }
+
+/* Inside the frame: no scrollbar, so the page gets the full 390px. */
+.is-framed { scrollbar-width: none; }
+.is-framed::-webkit-scrollbar { display: none; }
+
+/* On a real phone or a narrow window the page is already the mobile layout. */
+@media (max-width: 700px) {
+  .idsel-viewrow, .idsel .idsel-viewbtn, .idsel-stage { display: none; }
+}
+
 @media (max-width: 480px) {
   .idsel { right: 12px; bottom: 12px; left: 12px; max-width: none; }
   .idsel-bar { align-self: stretch; }
